@@ -24,3 +24,33 @@ MariaDB [student_marks]> describe marks;
 | mark       | int(11)     | YES  |     | NULL    |                |
 +------------+-------------+------+-----+---------+----------------+
 4 rows in set (0.030 sec)
+
+MariaDB [student_marks]> insert into marks (first_name,last_name, mark)
+    -> values
+    -> ("Fred", "Jones", 78), ("Bill", "James", 67), ("Carol", "Smith", 82), ("Bob", "Duncun", 60), ("Joan", "Davis", 86);
+Query OK, 5 rows affected (0.189 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+MariaDB [student_marks]> select * from marks;
++-----------+------------+-----------+------+
+| studentID | first_name | last_name | mark |
++-----------+------------+-----------+------+
+|         1 | Fred       | Jones     |   78 |
+|         2 | Bill       | James     |   67 |
+|         3 | Carol      | Smith     |   82 |
+|         4 | Bob        | Duncun    |   60 |
+|         5 | Joan       | Davis     |   86 |
++-----------+------------+-----------+------+
+5 rows in set (0.001 sec)
+
+MariaDB [student_marks]> select concat_ws(first_name, last_name) as FullName from marks;
++----------+
+| FullName |
++----------+
+| Jones    |
+| James    |
+| Smith    |
+| Duncun   |
+| Davis    |
++----------+
+5 rows in set (0.001 sec)
