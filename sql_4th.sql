@@ -134,3 +134,16 @@ MariaDB [pscompany]> select price from products where price not between 1.0 and 
 |  0.73 |
 +-------+
 4 rows in set (0.000 sec)
+MariaDB [pscompany]> select price from products where price >= 2.0 and price <= 1.0;
+Empty set (0.001 sec)
+
+MariaDB [pscompany]> select price from products where price not between 1.0 and 2.0;
++-------+
+| price |
++-------+
+|  0.48 |
+|  0.52 |
+|  0.62 |
+|  0.73 |
++-------+
+4 rows in set (0.001 sec)
