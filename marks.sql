@@ -65,3 +65,42 @@ MariaDB [student_marks]> select studentID, first_name, last_name, concat(first_n
 |         5 | Joan       | Davis     | JoanDavis  |   86 |
 +-----------+------------+-----------+------------+------+
 5 rows in set (0.001 sec)
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+MariaDB [student_marks]> create table department(
+    -> dept_id int not null auto_increment primary key,
+    -> dept_name varchar(100),
+    -> building varchar(50));
+Query OK, 0 rows affected (0.302 sec)
+
+MariaDB [student_marks]> describe department;
++-----------+--------------+------+-----+---------+----------------+
+| Field     | Type         | Null | Key | Default | Extra          |
++-----------+--------------+------+-----+---------+----------------+
+| dept_id   | int(11)      | NO   | PRI | NULL    | auto_increment |
+| dept_name | varchar(100) | YES  |     | NULL    |                |
+| building  | varchar(50)  | YES  |     | NULL    |                |
++-----------+--------------+------+-----+---------+----------------+
+3 rows in set (0.026 sec)
+
+MariaDB [student_marks]> create table student(
+    -> stduent_id int not null primary key,
+    -> student_name varchar(30),
+    -> age int,
+    -> marks int,
+    -> dept_id int not null,
+    -> foreign key(dept_id) references department(dept_id));
+Query OK, 0 rows affected (0.223 sec)
+
+MariaDB [student_marks]> describe student;
++--------------+-------------+------+-----+---------+-------+
+| Field        | Type        | Null | Key | Default | Extra |
++--------------+-------------+------+-----+---------+-------+
+| stduent_id   | int(11)     | NO   | PRI | NULL    |       |
+| student_name | varchar(30) | YES  |     | NULL    |       |
+| age          | int(11)     | YES  |     | NULL    |       |
+| marks        | int(11)     | YES  |     | NULL    |       |
+| dept_id      | int(11)     | NO   | MUL | NULL    |       |
++--------------+-------------+------+-----+---------+-------+
+5 rows in set (0.058 sec)
