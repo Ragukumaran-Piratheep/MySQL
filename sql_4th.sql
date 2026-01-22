@@ -237,3 +237,19 @@ MariaDB [pscompany]> select * from products order by quantity desc;
 |      2003 | PEN         | Pen 5B    |      100 |  0.73 |
 +-----------+-------------+-----------+----------+-------+
 7 rows in set (0.000 sec)
+
+MariaDB [pscompany]> select avg(price) as 'average price' from products;
++---------------+
+| average price |
++---------------+
+|      0.868571 |
++---------------+
+1 row in set (0.001 sec)
+
+MariaDB [pscompany]> select productCode, count(*) as total from products group by productCode order by total;
++-------------+-------+
+| productCode | total |
++-------------+-------+
+| PEN         |     7 |
++-------------+-------+
+1 row in set (0.001 sec)
