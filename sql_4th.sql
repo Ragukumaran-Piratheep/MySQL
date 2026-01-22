@@ -147,3 +147,93 @@ MariaDB [pscompany]> select price from products where price not between 1.0 and 
 |  0.73 |
 +-------+
 4 rows in set (0.001 sec)
+MariaDB [pscompany]> select price, quantity from products where price between 1.0 and 2.0 and quantity between 1000 and 2000;
++-------+----------+
+| price | quantity |
++-------+----------+
+|  1.25 |     2000 |
++-------+----------+
+1 row in set (0.001 sec)
+                     select quantity from products;
++----------+ompany]>
+| quantity |
++----------+
+|     5000 |
+|     8000 |
+|     2000 |
+|    10000 |
+|      500 |
+|      100 |
+|      100 |
++----------+
+7 rows in set (0.001 sec)
+
+MariaDB [pscompany]> select quantity from products order by price;
++----------+
+| quantity |
++----------+
+|    10000 |
+|      500 |
+|      100 |
+|      100 |
+|     5000 |
+|     8000 |
+|     2000 |
++----------+
+7 rows in set (0.001 sec)
+
+MariaDB [pscompany]> select name, quantity from products order by quantity;
++-----------+----------+
+| name      | quantity |
++-----------+----------+
+| Pen 4B    |      100 |
+| Pen 5B    |      100 |
+| Pen 3B    |      500 |
+| pen green |     2000 |
+| Pen Red   |     5000 |
+| Pen Blue  |     8000 |
+| Pen 2B    |    10000 |
++-----------+----------+
+7 rows in set (0.000 sec)
+
+MariaDB [pscompany]> select * from products order by quantity;
++-----------+-------------+-----------+----------+-------+
+| productID | productCode | name      | Quantity | price |
++-----------+-------------+-----------+----------+-------+
+|      2002 | PEN         | Pen 4B    |      100 |  0.62 |
+|      2003 | PEN         | Pen 5B    |      100 |  0.73 |
+|      2001 | PEN         | Pen 3B    |      500 |  0.52 |
+|      1003 | PEN         | pen green |     2000 |  1.25 |
+|      1001 | PEN         | Pen Red   |     5000 |  1.23 |
+|      1002 | PEN         | Pen Blue  |     8000 |  1.25 |
+|      1004 | PEN         | Pen 2B    |    10000 |  0.48 |
++-----------+-------------+-----------+----------+-------+
+7 rows in set (0.001 sec)
+
+MariaDB [pscompany]> select * from products order by quantity asc;
++-----------+-------------+-----------+----------+-------+
+| productID | productCode | name      | Quantity | price |
++-----------+-------------+-----------+----------+-------+
+|      2002 | PEN         | Pen 4B    |      100 |  0.62 |
+|      2003 | PEN         | Pen 5B    |      100 |  0.73 |
+|      2001 | PEN         | Pen 3B    |      500 |  0.52 |
+|      1003 | PEN         | pen green |     2000 |  1.25 |
+|      1001 | PEN         | Pen Red   |     5000 |  1.23 |
+|      1002 | PEN         | Pen Blue  |     8000 |  1.25 |
+|      1004 | PEN         | Pen 2B    |    10000 |  0.48 |
++-----------+-------------+-----------+----------+-------+
+7 rows in set (0.001 sec)
+
+MariaDB [pscompany]> select * from products order by quantity desc;
++-----------+-------------+-----------+----------+-------+
+| productID | productCode | name      | Quantity | price |
++-----------+-------------+-----------+----------+-------+
+|      1004 | PEN         | Pen 2B    |    10000 |  0.48 |
+|      1002 | PEN         | Pen Blue  |     8000 |  1.25 |
+|      1001 | PEN         | Pen Red   |     5000 |  1.23 |
+|      1003 | PEN         | pen green |     2000 |  1.25 |
+|      2001 | PEN         | Pen 3B    |      500 |  0.52 |
+|      2002 | PEN         | Pen 4B    |      100 |  0.62 |
+|      2003 | PEN         | Pen 5B    |      100 |  0.73 |
++-----------+-------------+-----------+----------+-------+
+7 rows in set (0.000 sec)
