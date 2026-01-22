@@ -70,3 +70,67 @@ MariaDB [pscompany]> select name from products where name not like 'Pencil%';
 | Pen 5B    |
 +-----------+
 7 rows in set (0.001 sec)
+MariaDB [pscompany]> select name, price from products where name like 'P%';
++-----------+-------+
+| name      | price |
++-----------+-------+
+| Pen Red   |  1.23 |
+| Pen Blue  |  1.25 |
+| pen green |  1.25 |
+| Pen 2B    |  0.48 |
+| Pen 3B    |  0.52 |
+| Pen 4B    |  0.62 |
+| Pen 5B    |  0.73 |
++-----------+-------+
+7 rows in set (0.001 sec)
+
+MariaDB [pscompany]> select name, price from products where name like 'P_%';
++-----------+-------+
+| name      | price |
++-----------+-------+
+| Pen Red   |  1.23 |
+| Pen Blue  |  1.25 |
+| pen green |  1.25 |
+| Pen 2B    |  0.48 |
+| Pen 3B    |  0.52 |
+| Pen 4B    |  0.62 |
+| Pen 5B    |  0.73 |
++-----------+-------+
+7 rows in set (0.000 sec)
+
+MariaDB [pscompany]> select name, price from products where name like 'P_a%';
+Empty set (0.000 sec)
+
+MariaDB [pscompany]> select name, price from products where name like 'P_%';
++-----------+-------+
+| name      | price |
++-----------+-------+
+| Pen Red   |  1.23 |
+| Pen Blue  |  1.25 |
+| pen green |  1.25 |
+| Pen 2B    |  0.48 |
+| Pen 3B    |  0.52 |
+| Pen 4B    |  0.62 |
+| Pen 5B    |  0.73 |
++-----------+-------+
+7 rows in set (0.000 sec)
+
+MariaDB [pscompany]> select quantity, price, name from products where quantity >= 5000 and price < 1.24 and name like 'P_%';
++----------+-------+---------+
+| quantity | price | name    |
++----------+-------+---------+
+|     5000 |  1.23 | Pen Red |
+|    10000 |  0.48 | Pen 2B  |
++----------+-------+---------+
+2 rows in set (0.001 sec)
+
+MariaDB [pscompany]> select price from products where price not between 1.0 and 2.0;
++-------+
+| price |
++-------+
+|  0.48 |
+|  0.52 |
+|  0.62 |
+|  0.73 |
++-------+
+4 rows in set (0.000 sec)
