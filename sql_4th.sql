@@ -304,3 +304,20 @@ MariaDB [pscompany]> select * from products;
 |      2003 | PEN         | Pen 5B    |      100 |  0.80 |
 +-----------+-------------+-----------+----------+-------+
 7 rows in set (0.000 sec)
+MariaDB [pscompany]> update products set price = 1.23, quantity = quantity + 150 where name = 'Pen Red';
+Query OK, 1 row affected (0.122 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+MariaDB [pscompany]> select * from products;
++-----------+-------------+-----------+----------+-------+
+| productID | productCode | name      | Quantity | price |
++-----------+-------------+-----------+----------+-------+
+|      1001 | PEN         | Pen Red   |     5050 |  1.23 |
+|      1002 | PEN         | Pen Blue  |     8000 |  1.38 |
+|      1003 | PEN         | pen green |     2000 |  1.38 |
+|      1004 | PEN         | Pen 2B    |    10000 |  0.53 |
+|      2001 | PEN         | Pen 3B    |      500 |  0.57 |
+|      2002 | PEN         | Pen 4B    |      100 |  0.68 |
+|      2003 | PEN         | Pen 5B    |      100 |  0.80 |
++-----------+-------------+-----------+----------+-------+
+7 rows in set (0.001 sec)
