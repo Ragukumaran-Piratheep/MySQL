@@ -253,3 +253,35 @@ MariaDB [pscompany]> select productCode, count(*) as total from products group b
 | PEN         |     7 |
 +-------------+-------+
 1 row in set (0.001 sec)
+MariaDB [pscompany]> select sum(quantity) as 'Total quantity' from products;
++----------------+
+| Total quantity |
++----------------+
+|          25700 |
++----------------+
+1 row in set (0.001 sec)
+MariaDB [pscompany]> select max(price) as 'Highest price', min(price) as 'Lowest price' from products;
++---------------+--------------+
+| Highest price | Lowest price |
++---------------+--------------+
+|          1.25 |         0.48 |
++---------------+--------------+
+1 row in set (0.001 sec)
+
+MariaDB [pscompany]> update products set price = price * 1.10;
+Query OK, 7 rows affected, 7 warnings (0.133 sec)
+Rows matched: 7  Changed: 7  Warnings: 7
+
+MariaDB [pscompany]> select * from products;
++-----------+-------------+-----------+----------+-------+
+| productID | productCode | name      | Quantity | price |
++-----------+-------------+-----------+----------+-------+
+|      1001 | PEN         | Pen Red   |     5000 |  1.35 |
+|      1002 | PEN         | Pen Blue  |     8000 |  1.38 |
+|      1003 | PEN         | pen green |     2000 |  1.38 |
+|      1004 | PEN         | Pen 2B    |    10000 |  0.53 |
+|      2001 | PEN         | Pen 3B    |      500 |  0.57 |
+|      2002 | PEN         | Pen 4B    |      100 |  0.68 |
+|      2003 | PEN         | Pen 5B    |      100 |  0.80 |
++-----------+-------------+-----------+----------+-------+
+7 rows in set (0.001 sec)
