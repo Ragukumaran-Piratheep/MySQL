@@ -54,3 +54,14 @@ MariaDB [student_marks]> select concat_ws(first_name, last_name) as FullName fro
 | Davis    |
 +----------+
 5 rows in set (0.001 sec)
+MariaDB [student_marks]> select studentID, first_name, last_name, concat(first_name,last_name) as FullName, mark from marks;
++-----------+------------+-----------+------------+------+
+| studentID | first_name | last_name | FullName   | mark |
++-----------+------------+-----------+------------+------+
+|         1 | Fred       | Jones     | FredJones  |   78 |
+|         2 | Bill       | James     | BillJames  |   67 |
+|         3 | Carol      | Smith     | CarolSmith |   82 |
+|         4 | Bob        | Duncun    | BobDuncun  |   60 |
+|         5 | Joan       | Davis     | JoanDavis  |   86 |
++-----------+------------+-----------+------------+------+
+5 rows in set (0.001 sec)
