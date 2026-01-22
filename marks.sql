@@ -204,3 +204,82 @@ MariaDB [student_marks]> select * from student order by marks desc;
 |        104 | David        |   20 |    65 |       2 |
 +------------+--------------+------+-------+---------+
 5 rows in set (0.001 sec)
+
+MariaDB [student_marks]> select avg(marks) as 'Average marks' from student group by dept_id;
++---------------+
+| Average marks |
++---------------+
+|       81.5000 |
+|       78.5000 |
+|       88.0000 |
++---------------+
+3 rows in set (0.001 sec)
+
+MariaDB [student_marks]> select dept_id, avg(marks) as 'Average marks' from student group by dept_id;
++---------+---------------+
+| dept_id | Average marks |
++---------+---------------+
+|       1 |       81.5000 |
+|       2 |       78.5000 |
+|       3 |       88.0000 |
++---------+---------------+
+3 rows in set (0.001 sec)
+
+MariaDB [student_marks]> select dept_id, count(*) as 'Number of Students' from student group by dept_id order by count(*) desc
+    -> ;
++---------+--------------------+
+| dept_id | Number of Students |
++---------+--------------------+
+|       1 |                  2 |
+|       2 |                  2 |
+|       3 |                  1 |
++---------+--------------------+
+3 rows in set (0.001 sec)
+
+MariaDB [student_marks]> select name, min(marks) as 'Minimum marks' from student;
+ERROR 1054 (42S22): Unknown column 'name' in 'field list'
+MariaDB [student_marks]> select student_name, min(marks) as 'Minimum marks' from student;
++--------------+---------------+
+| student_name | Minimum marks |
++--------------+---------------+
+| Alice        |            65 |
++--------------+---------------+
+1 row in set (0.001 sec)
+
+MariaDB [student_marks]> select student_name, dept_id, min(marks) as 'Minimum Marks' from student group by dept_id;
++--------------+---------+---------------+
+| student_name | dept_id | Minimum Marks |
++--------------+---------+---------------+
+| Alice        |       1 |            78 |
+| Charlie      |       2 |            65 |
+| Eva          |       3 |            88 |
++--------------+---------+---------------+
+3 rows in set (0.000 sec)
+
+MariaDB [student_marks]> select dept_id, student_name, min(marks) as 'Minimum Marks' from student group by dept_id;
++---------+--------------+---------------+
+| dept_id | student_name | Minimum Marks |
++---------+--------------+---------------+
+|       1 | Alice        |            78 |
+|       2 | Charlie      |            65 |
+|       3 | Eva          |            88 |
++---------+--------------+---------------+
+3 rows in set (0.001 sec)
+
+MariaDB [student_marks]> select student_name, max(marks) as 'Maximum Marks' from student;
++--------------+---------------+
+| student_name | Maximum Marks |
++--------------+---------------+
+| Alice        |            92 |
++--------------+---------------+
+1 row in set (0.000 sec)
+
+MariaDB [student_marks]> select dept_id, student_name, max(marks) as 'Maximum Marks' from student group by dept_id;
++---------+--------------+---------------+
+| dept_id | student_name | Maximum Marks |
++---------+--------------+---------------+
+|       1 | Alice        |            85 |
+|       2 | Charlie      |            92 |
+|       3 | Eva          |            88 |
++---------+--------------+---------------+
+3 rows in set (0.001 sec)
