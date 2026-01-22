@@ -171,3 +171,36 @@ MariaDB [student_marks]> select * from student where age > 20 and marks > 80;
 |        103 | Charlie      |   21 |    92 |       2 |
 +------------+--------------+------+-------+---------+
 1 row in set (0.001 sec)
+
+MariaDB [student_marks]> select * from student where dept_id = 1 or dept_id = 2;
++------------+--------------+------+-------+---------+
+| stduent_id | student_name | age  | marks | dept_id |
++------------+--------------+------+-------+---------+
+|        101 | Alice        |   20 |    85 |       1 |
+|        102 | Bob          |   22 |    78 |       1 |
+|        103 | Charlie      |   21 |    92 |       2 |
+|        104 | David        |   20 |    65 |       2 |
++------------+--------------+------+-------+---------+
+4 rows in set (0.001 sec)
+
+MariaDB [student_marks]> select * from student where marks between 70 and 90;
++------------+--------------+------+-------+---------+
+| stduent_id | student_name | age  | marks | dept_id |
++------------+--------------+------+-------+---------+
+|        101 | Alice        |   20 |    85 |       1 |
+|        102 | Bob          |   22 |    78 |       1 |
+|        105 | Eva          |   20 |    88 |       3 |
++------------+--------------+------+-------+---------+
+3 rows in set (0.001 sec)
+
+MariaDB [student_marks]> select * from student order by marks desc;
++------------+--------------+------+-------+---------+
+| stduent_id | student_name | age  | marks | dept_id |
++------------+--------------+------+-------+---------+
+|        103 | Charlie      |   21 |    92 |       2 |
+|        105 | Eva          |   20 |    88 |       3 |
+|        101 | Alice        |   20 |    85 |       1 |
+|        102 | Bob          |   22 |    78 |       1 |
+|        104 | David        |   20 |    65 |       2 |
++------------+--------------+------+-------+---------+
+5 rows in set (0.001 sec)
